@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+
+{% block title %}My Personal Anime List{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Animes</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Release Year</th>
+                <th>Genre</th>
+                <th>Age Restriction</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for anime in animes %}
+            <tr>
+                <td>{{ anime.name }}</td>
+                <td>{{ anime.release_year }}</td>
+                <td>{{ anime.genre }}</td>
+                <td>{{ anime.age_restriction }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+{% block script_js %}
+    <script src="{{ url_for('static', filename='js/tri.js') }}" type="text/javascript"></script>
+{% endblock %}

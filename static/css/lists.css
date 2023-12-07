@@ -1,0 +1,30 @@
+/* Style de base pour le tableau */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 14px;
+    border: 1px solid #ccc;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Style pour l'en-tête du tableau */
+th {
+    font-weight: bold;
+}
+
+/* Style pour les lignes paires du tableau */
+tr:nth-child(even) {
+
+}
+
+/* Style pour les liens dans les cellules du tableau */
+a {
+    color: #007bff;
+    text-decoration: none;
+}

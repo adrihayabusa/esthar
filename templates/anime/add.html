@@ -1,0 +1,37 @@
+{% extends 'layout.html' %}
+
+{% block title %}Ajouter un Anime{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Ajouter un Anime</h1>
+    <form method="POST" action="{{ url_for('anime.create_anime') }}" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            {{ form.name.label(class="form-label") }}
+            {{ form.name(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.genre.label(class="form-label") }}
+            {{ form.genre(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.release_year.label(class="form-label") }}
+            {{ form.release_year(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.violence_level.label(class="form-label") }}
+            {{ form.violence_level(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.age_restriction.label(class="form-label") }}
+            {{ form.age_restriction(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.explicit_content.label(class="form-label") }}
+            {{ form.explicit_content(class="form-control") }}
+        </div>
+        <button type="submit" class="btn btn-primary">Ajouter</button>
+    </form>
+</div>
+{% endblock %}

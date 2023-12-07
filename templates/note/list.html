@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+
+{% block title %}Notes{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Notes</h1>
+
+    {% if notes %}
+        <ul>
+        {% for year, months in notes.items() %}
+            <h2>{{ year }}</h2>
+            {% for month, notes in months.items() %}
+                <h3>{{ notes[0].date_created.strftime('%B') }}</h3>
+                <ul>
+                {% for note in notes %}
+                    <li><a href="{{ url_for('note.note_detail', note_id=note.id) }}">{{ note.title }} ({{ note.date_created.strftime('%d %B %Y') }})</a></li>
+                {% endfor %}
+                </ul>
+            {% endfor %}
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>Aucune note disponible.</p>
+    {% endif %}
+    {% if current_user.is_authenticated %}
+        <a href="{{ url_for('note.create_note') }}" class="btn btn-primary">Ajouter une note</a>
+    {% endif %}
+</div>
+{% endblock %}

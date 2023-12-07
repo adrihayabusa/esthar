@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Login</h1>
+    <form method="POST" action="{{ url_for('main.login') }}">
+        {{ form_user.login.label }} {{ form_user.login() }}
+        {{ form_user.password.label }} {{ form_user.password() }}
+        {{ form_user.submit() }}
+    </form>
+</div>
+{% endblock %}
+
+{% block script_js %}
+{% endblock %}

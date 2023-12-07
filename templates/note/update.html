@@ -1,0 +1,65 @@
+{% extends 'layout.html' %}
+
+{% block title %}Modifier une Note{% endblock %}
+
+{% block css %}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Modifier "{{ note.title }}"</h1>
+    <div class="form-group" style="margin-bottom: 10px">
+        <label for="text"></label>
+        <textarea class="form-control" id="text" name="text" rows="5" required>{{ text }}</textarea>
+    </div>
+    <button class="btn btn-primary" id="update-button">Modifier</button>
+</div>
+{% endblock %}
+
+{% block script_js %}
+    <script src="https://cdn.tiny.cloud/1/g7jyg199m7uvp7n47b3wzo6v6eko0e6r9klgclqxkjnbjzym/tinymce/6/tinymce.min.js" type="text/javascript" referrerpolicy="origin"></script>
+    <script type="text/javascript">
+        tinymce.init({
+            selector: '#text',
+            plugins: 'link image emoticons lists advlist codesample code',
+            toolbar: 'undo redo | bold italic underline strikethrough | sizeselect fontsize fontsizeselect | numlist bullist | alignleft aligncenter alignright | codesample code | link image | emoticons',
+            menubar: false,
+            fontsize_formats: "8pt 10pt 12pt 14pt 18pt 24pt 36pt",
+            images_upload_url: "/upload",
+            codesample_languages: [
+                {text: 'HTML/XML', value: 'markup'},
+                {text: 'JavaScript', value: 'javascript'},
+                {text: 'CSS', value: 'css'},
+                {text: 'PHP', value: 'php'},
+                {text: 'Ruby', value: 'ruby'},
+                {text: 'Python', value: 'python'},
+                {text: 'Java', value: 'java'},
+                {text: 'C', value: 'c'},
+                {text: 'C#', value: 'csharp'},
+                {text: 'C++', value: 'cpp'}
+            ],
+            browser_spellcheck: true,
+            contextmenu: false
+        });
+
+        $(document).ready(function() {
+            $('#update-button').click(function() {
+                let newText = tinymce.get('text').getContent();
+                let noteId = '{{ note.id }}';
+
+                $.ajax({
+                    url: '/notes/' + noteId + '/update',
+                    type: 'PATCH',
+                    data: { text: newText },
+                    success: function(response) {
+                        console.log('Note mise à jour avec succès');
+                        window.location.href = '/notes/' + noteId;
+                    },
+                    error: function(error) {
+                        console.error('Erreur lors de la mise à jour de la note', error);
+                    }
+                });
+            });
+        });
+    </script>
+{% endblock %}

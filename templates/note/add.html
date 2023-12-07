@@ -1,0 +1,57 @@
+{% extends 'layout.html' %}
+
+{% block title %}Add a Note{% endblock %}
+
+{% block css %}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Ajouter une Note</h1>
+    <form method="POST" action="{{ url_for('note.create_note') }}">
+        <div class="form-group">
+            <label for="title">Titre :</label>
+            <input type="text" class="form-control" id="title" name="title" required>
+        </div>
+        <div class="form-group" style="margin-bottom: 10px">
+            <label for="text"></label>
+            <textarea class="form-control" id="text" name="text" rows="5" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" id="submitBtn">Ajouter</button>
+    </form>
+</div>
+{% endblock %}
+
+{% block script_js %}
+    <script src="https://cdn.tiny.cloud/1/g7jyg199m7uvp7n47b3wzo6v6eko0e6r9klgclqxkjnbjzym/tinymce/6/tinymce.min.js" type="text/javascript" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: '#text',
+            plugins: 'link image emoticons lists advlist codesample code',
+            toolbar: 'undo redo | bold italic underline strikethrough | sizeselect fontsize fontsizeselect fontselect formatselect | numlist bullist | alignleft aligncenter alignright | codesample code | link image | emoticons',
+            menubar: false,
+            fontsize_formats: '8pt 10pt 12pt 14pt 18pt 24pt 36pt',
+            font_formats: 'Arial=arial,helvetica,sans-serif;Courier New=courier new,courier,monospace;',
+            images_upload_url: '/upload',
+            codesample_languages: [
+                {text: 'HTML/XML', value: 'markup'},
+                {text: 'JavaScript', value: 'javascript'},
+                {text: 'CSS', value: 'css'},
+                {text: 'PHP', value: 'php'},
+                {text: 'Ruby', value: 'ruby'},
+                {text: 'Python', value: 'python'},
+                {text: 'Java', value: 'java'},
+                {text: 'C', value: 'c'},
+                {text: 'C#', value: 'csharp'},
+                {text: 'C++', value: 'cpp'}
+            ],
+            init_instance_callback: function(editor) {
+                document.getElementById("submitBtn").addEventListener("click", function(e) {
+                    editor.save(); // Ceci force la mise à jour de la <textarea> sous-jacente
+                });
+            },
+            browser_spellcheck: true,
+            contextmenu: false
+        });
+    </script>
+{% endblock %}

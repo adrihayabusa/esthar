@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+
+{% block title %}Play on {{ emulator.name }}{% endblock %}
+
+{% block content %}
+    <div style="display: flex; flex-flow: column wrap; align-items: center">
+        <h1>{{ game.name }}</h1>
+        <h3>{{ game.platform }}</h3>
+        <div style="width:640px;height:480px;max-width:100%">
+          <div id="game"></div>
+        </div>
+    </div>
+{% endblock %}
+{% block script_js %}
+    <script type="text/javascript">
+        EJS_player = '#game';
+        EJS_gameUrl = "{{ url_for('emulators.get_game_image', image_folder=emulator.image_folder, filename=rom_filename) }}";
+        EJS_core = '{{ emulator.core }}';
+        EJS_lightgun = false;
+    </script>
+    {% if game.bios and emulator.bios_folder %}
+        <script type="text/javascript">
+            EJS_biosUrl = "{{ url_for('emulators.get_bios', bios_folder=emulator.bios_folder, filename=game.bios) }}";
+        </script>
+    {% endif %}
+    <script src="{{ url_for('static', filename='emulatorjs/loader.js') }}"></script>
+{% endblock %}

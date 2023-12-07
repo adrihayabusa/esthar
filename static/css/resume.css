@@ -1,0 +1,79 @@
+@font-face {
+    font-family: 'gameplay';
+    src: url('../fonts/Gameplay.ttf') format('truetype');
+}
+
+@media (max-width: 768px) {
+    #htmlView {
+        display: none !important;
+    }
+    .switch {
+        display: none !important;
+    }
+    #jsonView {
+        display: flex !important;
+        width: 100%;
+    }
+    #resume {
+        width: 100% !important;
+    }
+}
+
+pre {
+    width: 100%;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.switch {
+    display: flex;
+    align-items: center;  /* centre les éléments verticalement */
+    justify-content: center;
+    gap: 10px;            /* espace entre les éléments */
+}
+
+.slider-container {
+    position: relative;
+    width: 60px;
+    height: 20px;
+}
+
+.slider {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #ccc;
+    cursor: pointer;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 12px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+    transform: translateX(28px);  /* ceci est la largeur du slider - 26px (largeur de slider:before) - 4px (left de slider:before) - 2px (juste pour éviter tout chevauchement) */
+}
+
+.resume_name {
+    font: bold 30px 'gameplay', serif;
+}
+
+.resume_title {
+    font: 26px 'Arial', serif;
+}
