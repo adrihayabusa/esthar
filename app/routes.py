@@ -36,12 +36,6 @@ def anime_list():
     return anime_controller.get_list_animes()
 
 
-# @main_bp.route('/animes/create', methods=['GET', 'POST'])
-# @user_controller.admin_required
-# def create_anime():
-#     return anime_controller.add_anime()
-
-
 @anime_bp.route('/animes/<int:anime_id>')
 def anime_detail(anime_id):
     return anime_controller.get_anime_by_id(anime_id)
@@ -52,7 +46,7 @@ def game_list():
     return game_controller.get_all_games()
 
 
-@game_bp.route('/games/create')
+@game_bp.route('/games/add', methods=['GET', 'POST'])
 @user_controller.admin_required
 def create_game():
     return game_controller.add_game()

@@ -1,0 +1,32 @@
+# Ignorer tous les dossiers __pycache__
+**/__pycache__/
+**/__pycache__/*
+
+# Ignorer le dossier files dans app/
+app/files/
+
+# Fichier de config
+app/config.py
+
+# Autres fichiers et dossiers couramment ignorés pour les projets Flask
+*.pyc
+*.pyo
+*.egg-info/
+*.log
+*.sqlite
+
+# Environnements virtuels
+venv/
+*.venv/
+env/
+*.env/
+
+# Fichiers secrets
+*.secret
+
+# Fichiers de configuration spécifiques à l'IDE (par exemple, pour Visual Studio Code ou PyCharm)
+.vscode/
+.idea/
+
+# Photos
+static/uploads/

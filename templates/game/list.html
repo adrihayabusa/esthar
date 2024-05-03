@@ -4,31 +4,49 @@
 
 {% block content %}
 <div class="container">
-    <h1>Games</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Release Year</th>
-                <th>Genre</th>
-                <th>Platform</th>
-                <th>Image</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for game in games %}
-            <tr>
-                <td>{{ game.name }}</td>
-                <td>{{ game.release_year }}</td>
-                <td>{{ game.genre }}</td>
-                <td>{{ game.platform }}</td>
-                <td>{% if game.image %}<a href="{{ url_for('emulators.emulator', emulator_id=game.emulator_id, rom_filename=game.image) }}">{{ game.image }}</a>{% endif %}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <div class="amstrad-container" id="amstrad">
+        <h1 class="amstrad-title">Games</h1>
+        <table>
+            <thead>
+                <tr class="amstrad-header">
+                    <th class="amstrad-cell amstrad-name">Name</th>
+                    <th class="amstrad-cell amstrad-release">Release</th>
+                    <th class="amstrad-cell amstrad-game">Genre</th>
+                    <th class="amstrad-cell amstrad-game">Platform</th>
+                    <th class="amstrad-cell amstrad-game">Difficulty</th>
+                    <th class="amstrad-cell amstrad-play"></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for game in games %}
+                <tr class="amstrad-row">
+                    <td class="amstrad-cell amstrad-name">{{ game.name }}</td>
+                    <td class="amstrad-cell amstrad-release">{{ game.release_year }}</td>
+                    <td class="amstrad-cell amstrad-game">{{ game.genre }}</td>
+                    <td class="amstrad-cell amstrad-game">{{ game.platform }}</td>
+                    <td class="amstrad-cell amstrad-game">
+                        <div class="difficulty-level" data-difficulty="{{ game.difficulty }}">
+                            <span>&#9646;</span><span>&#9646;</span><span>&#9646;</span><span>&#9646;</span><span>&#9646;</span><span>&#9646;</span><span>&#9646;</span>
+                        </div>
+                    </td>
+                    <td class="amstrad-cell amstrad-play">{% if game.image %}<a href="{{ url_for('emulators.emulator', emulator_id=game.emulator_id, rom_filename=game.image) }}">&#9654;</a>{% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    {% if current_user.is_authenticated %}
+        <a href="{{ url_for('game.create_game') }}" class="btn btn-primary">Ajouter un jeu</a>
+    {% endif %}
 </div>
 {% endblock %}
 {% block script_js %}
     <script src="{{ url_for('static', filename='js/tri.js') }}" type="text/javascript"></script>
+    <script type="text/javascript">
+        const table = $("#amstrad table");
+
+        table.css({fontSize: "0.65em"});
+    </script>
 {% endblock %}

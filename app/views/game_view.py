@@ -7,3 +7,7 @@ def game_list(games):
 
 def game_detail(game, high_scores):
     return render_template('game/detail.html', game=game, high_scores=high_scores)
+
+
+def add_game(emulators):
+    return render_template('game/add.html', emulators=emulators)

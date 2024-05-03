@@ -4,27 +4,36 @@
 
 {% block content %}
 <div class="container">
-    <h1>Notes</h1>
+    <div class="htop-container" id="notes-container">
+        <h1 class="htop-title">Notes</h1>
 
-    {% if notes %}
-        <ul>
-        {% for year, months in notes.items() %}
-            <h2>{{ year }}</h2>
-            {% for month, notes in months.items() %}
-                <h3>{{ notes[0].date_created.strftime('%B') }}</h3>
-                <ul>
-                {% for note in notes %}
-                    <li><a href="{{ url_for('note.note_detail', note_id=note.id) }}">{{ note.title }} ({{ note.date_created.strftime('%d %B %Y') }})</a></li>
+        {% if notes %}
+            <div class="htop-header">
+                <div class="htop-cell htop-note">Title</div>
+                <div class="htop-cell htop-date">Date</div>
+            </div>
+            {% for year, months in notes.items() %}
+                {% for month, notes in months.items() %}
+                    {% for note in notes %}
+                        <div class="htop-row">
+                            <div class="htop-cell htop-note"><a href="{{ url_for('note.note_detail', note_id=note.id) }}">{{ note.title }}</a></div>
+                            <div class="htop-cell htop-date">{{ note.date_created.strftime('%d/%m/%Y') }}</div>
+                        </div>
+                    {% endfor %}
                 {% endfor %}
-                </ul>
             {% endfor %}
-        {% endfor %}
-        </ul>
-    {% else %}
-        <p>Aucune note disponible.</p>
-    {% endif %}
+        {% else %}
+            <p>Aucune note disponible.</p>
+        {% endif %}
+    </div>
     {% if current_user.is_authenticated %}
         <a href="{{ url_for('note.create_note') }}" class="btn btn-primary">Ajouter une note</a>
     {% endif %}
 </div>
+{% endblock %}
+
+{% block script_js %}
+    <script type="text/javascript">
+
+    </script>
 {% endblock %}

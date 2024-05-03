@@ -3,12 +3,14 @@
 {% block title %}Login{% endblock %}
 
 {% block content %}
-<div class="container">
-    <h1>Login</h1>
+<div class="container" style="max-width: 35em;">
+    <h2 style="margin-bottom: 2em; text-align: center">Log in</h2>
     <form method="POST" action="{{ url_for('main.login') }}">
-        {{ form_user.login.label }} {{ form_user.login() }}
-        {{ form_user.password.label }} {{ form_user.password() }}
-        {{ form_user.submit() }}
+        <label for="{{ form_user.login.id }}" style="margin-bottom: 0.5em;">Username</label>
+        {{ form_user.login(class="form-control") }}
+        <label for="{{ form_user.password.id }}" style="margin-bottom: 0.5em;">Password</label>
+        {{ form_user.password(class="form-control") }}
+        <div class="d-flex flex-row justify-content-center" style="margin-top: 1em;">{{ form_user.submit(class="btn btn-primary") }}</div>
     </form>
 </div>
 {% endblock %}

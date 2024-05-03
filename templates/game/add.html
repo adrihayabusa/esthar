@@ -1,0 +1,50 @@
+{% extends 'layout.html' %}
+
+{% block title %}Add a Game{% endblock %}
+
+{% block css %}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Ajouter un jeu</h1>
+    <form method="POST" action="{{ url_for('game.create_game') }}" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="title">Titre :</label>
+            <input type="text" class="form-control" id="title" name="title" required>
+        </div>
+        <div class="form-group" style="margin-bottom: 10px">
+            <label for="release_year">Release Year</label>
+            <input type="number" class="form-control" id="release_year" name="release_year" required>
+        </div>
+        <div class="form-group" style="margin-bottom: 10px">
+            <label for="genre">Genre</label>
+            <input type="text" class="form-control" id="genre" name="genre" required>
+        </div>
+        <div class="form-group" style="margin-bottom: 10px">
+            <label for="difficulty">Difficulty</label>
+            <input type="text" class="form-control" id="difficulty" name="difficulty" required>
+        </div>
+        <div class="form-group" style="margin-bottom: 10px">
+            <label for="platform">Platform</label>
+            <input type="text" class="form-control" id="platform" name="platform" required>
+        </div>
+        <div class="form-group" style="margin-bottom: 10px">
+            <label for="image">Game file</label>
+            <input type="file" class="form-control" id="image" name="image" required>
+        </div>
+        <div class="form-group" style="margin-bottom: 10px">
+            <label for="emulator">Emulator</label>
+            <select class="form-control" id="emulator" name="emulator" required>
+                {% for emulator in emulators %}
+                    <option value="{{ emulator.id }}">{{ emulator.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary" id="submitBtn">Ajouter</button>
+    </form>
+</div>
+{% endblock %}
+
+{% block script_js %}
+{% endblock %}

@@ -5,6 +5,13 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'Press Start 2P';
+    src: url('../fonts/press-start-2p.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 h1 {
     text-align: center;
 }
@@ -45,7 +52,7 @@ body.dark-mode {
     color: #fff;
 }
 
-/* Styles pour le toggle switch */
+/* TODO Delete this -- Styles pour le toggle switch */
 .switch-light-dark {
     position: relative;
     display: inline-block;
@@ -95,6 +102,49 @@ input:checked + .slider-light-dark:before {
 
 .slider-light-dark.round:before {
   border-radius: 50%;
+}
+
+/* Styles for the theme flip button */
+.flip-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5em;
+  line-height: 2em;
+  width: 2em;
+  height: 2em;
+  border-radius: 50%;
+  border: none;
+  background-color: #f6eec8; /* Light theme color */
+  transition: all 0.5s ease;
+  cursor: pointer;
+  margin-left: 1.2em;
+}
+
+/* Dark theme styles */
+body.dark-mode .flip-button {
+  background-color: #1c1c1c; /* Dark theme color */
+  color: white;
+}
+
+/* Icon for the dark theme (moon) */
+body.dark-mode .flip-button::before {
+    content: "";
+    width: 80%;
+    height: 80%;
+    background-image: url('../img/moon-dark-mode.png');
+    background-size: cover;
+    background-position: center;
+}
+
+/* Icon for the light theme (sun) */
+.flip-button::before {
+    content: "";
+    width: 80%;
+    height: 80%;
+    background-image: url('../img/sun-light-mode.png');
+    background-size: cover;
+    background-position: center;
 }
 
 .home_title {
@@ -169,15 +219,4 @@ input:checked + .slider-light-dark:before {
     .menu-desktop {
         display: none;
     }
-
-    /*.switch-light-dark {*/
-    /*    width: 50px;*/
-    /*}*/
-    /*.slider-light-dark:before {*/
-    /*    width: 22px;*/
-    /*    height: 22px;*/
-    /*}*/
-    /*input:checked + .slider-light-dark:before {*/
-    /*    transform: translateX(22px);*/
-    /*}*/
 }

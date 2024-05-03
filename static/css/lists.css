@@ -3,14 +3,12 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin: 20px 0;
-    font-size: 14px;
-    border: 1px solid #ccc;
+    font-size: 1em;
 }
 
 th, td {
     padding: 8px;
     text-align: left;
-    border-bottom: 1px solid #ddd;
 }
 
 /* Style pour l'en-tête du tableau */
@@ -27,4 +25,160 @@ tr:nth-child(even) {
 a {
     color: #007bff;
     text-decoration: none;
+}
+
+/* HTOP Style */
+.htop-container {
+    font-family: monospace;
+    overflow: auto;
+    background-color: black;
+    border: 0.15em solid #288;
+}
+
+.htop-header {
+    font-weight: bold;
+    border-bottom: 1px solid #888;
+    display: flex;
+}
+
+.htop-title {
+    font-weight: bold;
+    text-align: center;
+    margin: auto;
+}
+
+.htop-cell {
+    padding: 5px 10px;
+}
+
+.htop-year {
+    width: 50px;
+}
+
+.htop-month {
+    width: 100px;
+}
+
+.htop-note {
+    flex-grow: 1;
+}
+
+.htop-date {
+    width: 120px;
+}
+
+.htop-row {
+    display: flex;
+    border-bottom: 1px solid #ccc;
+}
+
+.htop-row:last-child {
+    border-bottom: none;
+}
+
+.htop-row:hover {
+    background-color: #288;
+}
+
+/* Amstrad CPC Style */
+.amstrad-container {
+    font-family: "Press Start 2P", monospace;
+    overflow: auto;
+    background-color: #111111;
+    margin: auto;
+    max-width: 1000px;
+    padding: 20px;
+    border: 1em solid #101010;
+    border-radius: 1.5em;
+}
+
+.amstrad-title {
+    font-weight: bold;
+    text-align: center;
+    margin: 10px auto;
+    color: #00fd97;
+}
+
+.amstrad-header {
+    font-weight: bold;
+    background-color: #00fd97;
+    color: #111111;
+    display: flex;
+}
+
+.amstrad-cell {
+    padding: 5px;
+    flex: 1;
+    text-align: left;
+    display: flex;
+    align-items: center;
+}
+
+.amstrad-game {
+    flex-grow: 2;
+}
+
+.amstrad-name {
+    flex-grow: 3;
+    width: 20em;
+}
+
+.amstrad-play {
+    width: 2em;
+}
+
+.amstrad-release {
+    flex-grow: 2;
+    width: 12.5em;
+}
+
+.amstrad-row {
+    display: flex;
+    color: #00fd97;
+}
+
+.amstrad-row:hover {
+    background-color: #00fd97;
+    color: #111111;
+}
+
+.difficulty-level {
+    color: #777;
+    height: 1.7em;
+    width: 10em;
+    display: flex;
+    align-items: center;
+}
+
+.difficulty-level span {
+    font-size: 1.4em;
+    transform: scale(.5, 1);
+    text-align: center;
+    position: relative;
+    top: -11%;
+    text-shadow: none !important;
+}
+
+/* Color bars based on difficulty level */
+/* Green for difficulty levels 1 to 3 */
+.difficulty-level[data-difficulty="1"] span:nth-child(-n+1),
+.difficulty-level[data-difficulty="2"] span:nth-child(-n+2),
+.difficulty-level[data-difficulty="3"] span:nth-child(-n+3) {
+    color: #00ff00;
+}
+
+/* Orange for difficulty levels 4 to 5 */
+.difficulty-level[data-difficulty="4"] span:nth-child(-n+4),
+.difficulty-level[data-difficulty="5"] span:nth-child(-n+5) {
+    color: #ffa500;
+}
+
+/* Red for difficulty level 6 */
+.difficulty-level[data-difficulty="6"] span:nth-child(-n+6) {
+    color: #ff0000;
+}
+
+/* Purple for difficulty level 7 */
+.difficulty-level[data-difficulty="7"] span:nth-child(-n+7) {
+    color: #800080;
 }

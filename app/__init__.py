@@ -3,6 +3,7 @@ from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
 from .forms import AddAnimeForm, AddGameForm
 from datetime import timedelta
+from flask_babelex import Babel
 
 db = SQLAlchemy()
 login_manager = LoginManager()
@@ -10,6 +11,8 @@ login_manager = LoginManager()
 
 def create_app():
     app = Flask(__name__, template_folder="../templates", static_folder="../static")
+    babel = Babel(app)
+
     login_manager.init_app(app)
 
     from app.config import SQLALCHEMY_DATABASE_URI, SECRET_KEY, UPLOAD_FOLDER
