@@ -19,7 +19,7 @@ def create_app():
     app.config['SQLALCHEMY_DATABASE_URI'] = SQLALCHEMY_DATABASE_URI
     app.config['SECRET_KEY'] = SECRET_KEY
     app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-    app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(minutes=30)
+    app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(minutes=45)
 
     db.init_app(app)
 
