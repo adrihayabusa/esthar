@@ -1,19 +1,56 @@
 {% extends "layout.html" %}
-{% block title %}Bienvenue{% endblock %}
+{% block title %}Welcome!{% endblock %}
 
 {% block content %}
 <div class="container">
+    <div class="d-flex flex-row">
+        <button class="btn btn-danger btn-category" data-bs-toggle="button" data-category-id="1" id="category-dev">Dev</button>
+        <button class="btn btn-anime btn-category" data-bs-toggle="button" data-category-id="2" id="category-anime">Anime</button>
+        <button class="btn btn-success btn-category" data-bs-toggle="button" data-category-id="3" id="category-lessons-dev">Tutorials - Dev</button>
+        <button class="btn btn-light btn-category" data-bs-toggle="button" data-category-id="4" id="category-other">Other</button>
+    </div>
     <section>
-        {% for article in articles %}
-            <div class="article">
-                <a href="{{ url_for('note.note_detail', note_id=article.id) }}"><h2 class="text-center">{{ article.title }}</h2></a>
+        {% for note in notes %}
+            <div class="note" data-category-id="{{ note.category.id }}" id="note_{{ note.category_id }}_{{ note.id }}">
+                <a href="{{ url_for('note.note_detail', note_id=note.id) }}"><h2 class="text-center">{{ note.title }}</h2></a>
                 <div class="note-body">
-                    {{ article.body|safe }}
+                    {{ note.body|safe }}
                 </div>
-                <div style="margin-bottom: 1em; margin-top: 1em; font-style: italic;"><a href="{{ url_for('note.note_detail', note_id=article.id) }}">Read the article...</a></div>
-                <span style="font-style: italic">Posted on {{ article.date_created }}</span>
+                <div style="margin-bottom: 1em; margin-top: 1em; font-style: italic;"><a href="{{ url_for('note.note_detail', note_id=note.id) }}">Read the note...</a></div>
+                <div class="d-flex flex-row">
+                    <span style="font-style: italic">Posted on {{ note.date_created.strftime('%Y-%m-%d') }}</span>
+                    <span class="note-category-{{ note.category.id }}">{{ note.category.name }}</span>
+                </div>
             </div>
         {% endfor %}
     </section>
 </div>
+{% endblock %}
+
+{% block script_js %}
+    <script type="text/javascript">
+        let notes = $(".note");
+
+        $(".btn-category").click(function () {
+            let category = $(this).attr("data-category-id");
+
+            if ($(this).hasClass("btn-disabled")) {
+                $(this).removeClass("btn-disabled");
+                notes.each(function () {
+                    if ($(this).attr("data-category-id") === category) {
+                        $(this).show();
+                    }
+                });
+            } else {
+                $(this).addClass("btn-disabled");
+                notes.each(function () {
+                    if ($(this).attr("data-category-id") === category) {
+                        $(this).hide();
+                    }
+                });
+            }
+
+
+        });
+    </script>
 {% endblock %}

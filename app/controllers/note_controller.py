@@ -1,5 +1,6 @@
 from flask import current_app, request, redirect, url_for, Markup
 from app.models.note_model import Note
+from app.models.note_category_model import NoteCategory
 from app.views import note_view
 from app import db
 from datetime import datetime
@@ -34,6 +35,7 @@ def add_note():
     if request.method == 'POST':
         title = request.form.get('title')
         text = request.form.get('text')
+        category_id = request.form.get('category_id')
 
         notes_dir = os.path.join(current_app.root_path, 'files', 'notes')
         os.makedirs(notes_dir, exist_ok=True)
@@ -43,7 +45,7 @@ def add_note():
         file_name = f"note_{formatted_datetime}.txt"
         file_path = os.path.join(notes_dir, file_name)
 
-        note = Note(title=title, text_file=file_path, date_created=current_datetime)
+        note = Note(title=title, text_file=file_path, category_id=category_id, date_created=current_datetime)
         db.session.add(note)
         db.session.commit()
 
@@ -51,7 +53,9 @@ def add_note():
             file.write(text)
 
         return redirect(url_for('note.note_detail', note_id=note.id))
-    return note_view.add_note()
+
+    categories = NoteCategory.query.all()
+    return note_view.add_note(categories)
 
 
 def update_note(note_id):

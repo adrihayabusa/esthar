@@ -160,14 +160,14 @@ body.dark-mode .flip-button::before {
     border-bottom: black 2px solid;
 }
 
-.article {
+.note {
     border: lightgray 2px solid;
     box-shadow: 0 0.5rem 0.5rem darkgray;
     padding: 1em;
     margin-bottom: 2em;
 }
 
-.article img {
+.note img {
     max-width: 100%;
     height: auto;
 }
@@ -219,4 +219,64 @@ body.dark-mode .flip-button::before {
     .menu-desktop {
         display: none;
     }
+}
+
+.btn-category {
+    margin: 0.5em 0.5em 0.5em 0.5em;
+}
+
+.btn-disabled {
+    opacity: 60%;
+}
+
+.btn-anime {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: #424499;
+  --bs-btn-border-color: #424499;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #333373;
+  --bs-btn-hover-border-color: #333373;
+  --bs-btn-focus-shadow-rgb: 225, 83, 97;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #424097;
+  --bs-btn-active-border-color: #313286;
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: #fff;
+  --bs-btn-disabled-bg: #424499;
+  --bs-btn-disabled-border-color: #424499;
+}
+
+.note-category-1 {
+    font-style: italic;
+    margin-left: auto;
+    background-color: #dc3545;
+    border-radius: 1em;
+    padding: 0.2em 0.5em 0.2em 0.5em;
+}
+
+.note-category-2 {
+    font-style: italic;
+    margin-left: auto;
+    background-color: #424499;
+    border-radius: 1em;
+    padding: 0.2em 0.5em 0.2em 0.5em;
+
+}
+
+.note-category-3 {
+    font-style: italic;
+    margin-left: auto;
+    background-color: #198754;
+    border-radius: 1em;
+    padding: 0.2em 0.5em 0.2em 0.5em;
+
+}
+
+.note-category-4 {
+    font-style: italic;
+    color: black;
+    margin-left: auto;
+    background-color: #f8f9fa;
+    border-radius: 1em;
+    padding: 0.2em 0.5em 0.2em 0.5em;
 }

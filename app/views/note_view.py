@@ -5,8 +5,8 @@ def notes_list(notes):
     return render_template('note/list.html', notes=notes)
 
 
-def add_note():
-    return render_template('note/add.html')
+def add_note(categories):
+    return render_template('note/add.html', categories=categories)
 
 
 def view_note(note, text):
