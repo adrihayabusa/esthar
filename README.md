@@ -20,13 +20,14 @@ I hesitated between Flask and Django. Because of the limited scope of this proje
 
 ## 📁 Project Structure
 
-esthar/ 
+```bash
+esthar/
 ├── app/              # Core application logic 
 ├── static/           # Static assets (CSS, JS, images)
 ├── templates/        # HTML templates 
 ├── run.py            # Entry point to launch the app 
 └── .gitignore        # Git configuration
-
+```
 
 ## 📝 Features
 - Personal portfolio homepage
