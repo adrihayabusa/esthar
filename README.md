@@ -1,4 +1,4 @@
-# Esthar - Personal Website  
+# Personal Website using Flask
 A minimalist personal portfolio and blog built with Flask and SQLAlchemy.
 
 The purpose was to discover how to build a webapp with Python, by using a module which would allow me to create a MVC architecture.
@@ -47,26 +47,46 @@ esthar/
 
 ```bash
 python3 -m venv env
-source venv/bin/activate  ; On MacOS and Linux
-venv\\Scripts\\activate   ; On Windows
+source env/bin/activate  ; On MacOS and Linux
+env\\Scripts\\activate   ; On Windows
 ```
 
 - Install dependencies:
 
-pip install -r requirements.txt  # If we consider your dependencies within a TXT file.
+`pip install -r requirements.txt  # If we consider your dependencies within a TXT file.`
+
+Here is the list : `flask flask_babel flask_login flask_sqlalchemy flask_wtf werkzeug`
+
+Also, I have been using MariaDB for the database. You will have to install it, or to adapt the config file if you want to use another applicaion, like MongoDB or NoSQL for example.
+
+If you want to go with mariaDb, please refeer to the official documentation available here : https://mariadb.com/get-started-with-mariadb
+
+- Add a config.py file inside the \app folder
+
+This file will be used to setup a login session, and it also contains your login information to access the database.
+
+Here is a template:
+
+```python
+SQLALCHEMY_DATABASE_URI = ""
+SECRET_KEY = ""
+UPLOAD_FOLDER = ""
+RESUME_DATA = ""
+```
+You only need the four global constants above.
 
 - Run the app:
 
-python run.py
+`python run.py`
 
-📌 Notes
+## 📌 Notes
 
 This project is a personal experiment and learning tool. Feel free to ask any questions, take it and adapt as you need, or report any problem.
 
-💥 Issues
+## 💥 Issues
 
-From my last commit, I remember that the form to create a note might be broken. To be fixed soon.
+25/07/2024 - Since my last commit, the form to create a note might be broken. To be fixed soon.
 
-📫 Contact
+## 📫 Contact
 
 Created by Adrien LEBORGNE — feel free to reach out via GitHub for feedback or collaboration.
