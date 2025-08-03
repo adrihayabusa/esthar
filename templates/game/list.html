@@ -38,7 +38,7 @@
     </div>
 
     {% if current_user.is_authenticated %}
-        <a href="{{ url_for('game.create_game') }}" class="btn btn-primary">Ajouter un jeu</a>
+        <a href="{{ url_for('game.create_game') }}" class="btn btn-primary" style="margin-top: .6em;">Add a game</a>
     {% endif %}
 </div>
 {% endblock %}

@@ -1,4 +1,5 @@
-from flask import current_app, request, redirect, url_for, Markup
+from flask import current_app, request, redirect, url_for
+from markupsafe import Markup
 from app.models.note_model import Note
 from app.models.note_category_model import NoteCategory
 from app.views import note_view

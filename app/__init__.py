@@ -3,7 +3,7 @@ from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
 from .forms import AddAnimeForm, AddGameForm
 from datetime import timedelta
-from flask_babelex import Babel
+from flask_babel import Babel
 
 db = SQLAlchemy()
 login_manager = LoginManager()
